@@ -1,0 +1,151 @@
+openapi: 3.0.0
+info:
+  title: BugFree
+  version: 1.0.0
+  description: A simple API for managing checklist items in the BugFree app.
+
+servers:
+  - url: http://localhost:3000
+    description: Local Development Server
+  - url: https://ca4bb038-ee44-49a8-bcdb-2e48a341652e.mock.pstmn.io
+    description: Postman Server
+
+paths:
+  /task:
+    get:
+      summary: Get all tasks
+      responses:
+        '200':
+          description: A list of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+              examples:
+                TaskList:
+                  $ref: '#/components/examples/TaskList'
+    post:
+      summary: Create a new task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+            examples:
+              Task:
+                $ref: '#/components/examples/Task'
+      responses:
+        '201':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /task/{id}:
+    get:
+      summary: Get a specific task
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+              examples:
+                Task:
+                  $ref: '#/components/examples/Task'
+
+    put:
+      summary: Update a task
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: Task updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+    delete:
+      summary: Delete a task
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Task deleted successfully
+
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the task
+        title:
+          type: string
+          description: The title of the checklist
+        category:
+          type: string
+          description: The category of the task
+        description:
+          type: string
+          description: The description of the task
+        startDate:
+          type: string
+          description: The start date of the task
+        endDate:
+          type: string
+          description: The end date of the task
+        finished:
+          type: boolean
+          description: Whether the task has been finished
+  examples:
+    Task:
+      value:
+        id: "0"
+        title: "Check the weather"
+        category: "Weather"
+        description: "Check the weather in Tokyo"
+        startDate: "2024-01-01"
+        endDate: "2024-01-02"
+        finished: false
+    TaskList: 
+      value:
+        - id: "1"
+          title: "Doc appointment"
+          category: "Health"
+          description: "Doc appointment"
+          startDate: "2024-01-01"
+          endDate: "2024-01-02"
+          finished: false
+        - id: "2"
+          title: "Buy groceries"
+          category: "Shopping"
+          description: "Buy groceries"
+          startDate: "2024-02-11"
+          endDate: "2024-02-22"
+          finished: false
