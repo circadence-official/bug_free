@@ -1,0 +1,22 @@
+.daily-task-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 46px;
+    width: 90%;
+    /* max-width: 500px; */
+    background-color: white;
+    padding: 10px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+    margin: 0 auto;
+    border: 1px solid #f0f0f0;
+}
+
+.task-checkbox{
+    width: 22px;
+    height: 22px;
+    accent-color: #006ee9;
+    cursor: pointer;
+}
