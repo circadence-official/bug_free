@@ -1,0 +1,31 @@
+.interaction-new-task-updated{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    text-align: center;
+}
+
+.success-message{
+    color: #006ee9;
+}
+
+.check-icon{
+    background-color: #006ee9;
+    border-radius: 25%;
+    padding: 10px;
+}
+
+.back-button{
+    width: 100%;
+}
+
+.back-button button{
+    width: 100%;
+    margin-top: 12px;
+}
